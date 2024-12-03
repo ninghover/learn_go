@@ -2,10 +2,10 @@ package lib1
 
 import "fmt"
 
-func init(){
+func init() {
 	fmt.Println("lib1.init()...")
 }
 
-func Fun(){
+func Fun() {
 	fmt.Println("lib1.Fun()...")
 }

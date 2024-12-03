@@ -1,8 +1,8 @@
-package main	//有main函数的，一定是main包
+package main //有main函数的，一定是main包
 
 import "fmt"
 
-func hello(){
+func hello() {
 	fmt.Println("hello, go")
 }
 

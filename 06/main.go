@@ -8,16 +8,16 @@ import "fmt"
 // 	b=tmp
 // }
 
-func swap2(a,b *int){
-	tem:=*a
-	*a=*b
-	*b=tem
+func swap2(a, b *int) {
+	tem := *a
+	*a = *b
+	*b = tem
 }
 func main() {
-	a,b:=10,20
-	fmt.Println("a,b = ",a,b)
+	a, b := 10, 20
+	fmt.Println("a,b = ", a, b)
 
-	swap2(&a,&b)
+	swap2(&a, &b)
 
-	fmt.Println("a,b = ",a,b)
+	fmt.Println("a,b = ", a, b)
 }

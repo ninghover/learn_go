@@ -16,7 +16,7 @@ func main() {
 	// 	fmt.Println("slice2非空")
 	// }
 	// slice2 = make([]int, 3) //开辟空间
-	slice2:=make([]int,3)
+	slice2 := make([]int, 3)
 	fmt.Printf("len = %d, slice2 =%v\n", len(slice2), slice2)
 
 	//3.
@@ -37,7 +37,7 @@ func main() {
 	fmt.Printf("len=%d,cap=%d,slice5=%v\n", len(slice5), cap(slice5), slice5)
 
 	//6.类似python这样的切片
-	var slice6 = slice5[:2]
+	slice6 := slice5[:2]
 	fmt.Printf("len=%d,cap=%d,slice6=%v\n", len(slice6), cap(slice6), slice6)
 	fmt.Printf("%d %d\n", &slice5[0], &slice6[0]) //实际上是指向同一片内存地址，一个也会影响到另一个
 
