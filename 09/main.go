@@ -9,13 +9,14 @@ func main() {
 	fmt.Printf("len = %d, slice1 = %v\n", len(slice1), slice1)
 
 	//2.
-	var slice2 []int //声明
-	if slice2 == nil {
-		fmt.Println("slice2是个空slice")
-	} else {
-		fmt.Println("slice2非空")
-	}
-	slice2 = make([]int, 3) //开辟空间
+	// var slice2 []int //声明
+	// if slice2 == nil {
+	// 	fmt.Println("slice2是个空slice")
+	// } else {
+	// 	fmt.Println("slice2非空")
+	// }
+	// slice2 = make([]int, 3) //开辟空间
+	slice2:=make([]int,3)
 	fmt.Printf("len = %d, slice2 =%v\n", len(slice2), slice2)
 
 	//3.
