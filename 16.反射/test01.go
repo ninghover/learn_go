@@ -51,18 +51,18 @@ type Writer interface {
 	WriteBook()
 }
 
-type Book struct{
+type Book struct {
 }
 
-func (b * Book)ReadBook(){
+func (b *Book) ReadBook() {
 	fmt.Println("读书")
 }
 
-func (b *Book)WriteBook(){
+func (b *Book) WriteBook() {
 	fmt.Println("写字")
 }
 
-func main() {
+/*func main() {
 	b:=&Book{}
 	b.ReadBook()
 	b.WriteBook()
@@ -74,4 +74,4 @@ func main() {
 
 	var w Writer=r.(Writer)
 	w.WriteBook()
-}
+}*/
