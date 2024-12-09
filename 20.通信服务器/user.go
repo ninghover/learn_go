@@ -2,6 +2,7 @@ package main
 
 import (
 	"net"
+	"strings"
 )
 
 type User struct {
@@ -50,10 +51,24 @@ func (user *User) DoMessage(msg string) {
 	if msg == "who" { // 查看所有在线用户
 		user.server.mapLock.Lock()
 		for _, u := range user.server.OnlineMap {
-			sendMsg := "[" + u.Name + "]在线...\n"
+			sendMsg := "[" + u.Addr + "]" + u.Name + ":在线...\n"
 			user.SendMsg(sendMsg)
 		}
 		user.server.mapLock.Unlock()
+	} else if msg[:7] == "rename " { // 更新用户名
+		newName := strings.Split(msg, " ")[1]
+		_, ok := user.server.OnlineMap[newName]
+		if ok {
+			user.SendMsg("新用户名已存在！\n")
+		} else {
+			user.server.mapLock.Lock()
+			delete(user.server.OnlineMap, user.Name)
+			user.Name = newName
+			user.server.OnlineMap[newName] = user
+			user.server.mapLock.Unlock()
+			user.SendMsg("用户名更新成功！\n")
+		}
+
 	} else {
 		user.server.BroadCast(user, msg)
 	}
