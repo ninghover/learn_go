@@ -56,7 +56,7 @@ func (s *Server) Handle(conn net.Conn) {
 	go func() {
 		buf := make([]byte, 4096)
 		for {
-			n, err := conn.Read(buf)
+			n, err := conn.Read(buf) // 从conn里面读
 			if n == 0 {
 				user.Offline()
 				return
