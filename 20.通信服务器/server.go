@@ -85,7 +85,7 @@ func (s *Server) Handle(conn net.Conn) {
 		case <-isLive:
 			// 当前用户活跃，应该重置定时器
 			// 不做任何事情，为了激活select，更新定时器
-		case <-time.After(time.Second * 10): // 一旦执行这个case，会重置定时器
+		case <-time.After(time.Second * 20): // 一旦执行这个case，会重置定时器
 			user.SendMsg("强制下线！\n")
 			// user.Offline() 为什么这里不需要Offline? 答:上面的for循环检测到n==0，会自动调用Offline
 

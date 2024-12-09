@@ -55,7 +55,7 @@ func (user *User) DoMessage(msg string) {
 			user.SendMsg(sendMsg)
 		}
 		user.server.mapLock.Unlock()
-	} else if msg[:7] == "rename " { // 更新用户名
+	} else if len(msg) >= 7 && msg[:7] == "rename " { // 更新用户名
 		newName := strings.Split(msg, " ")[1]
 		_, ok := user.server.OnlineMap[newName]
 		if ok {
@@ -67,6 +67,16 @@ func (user *User) DoMessage(msg string) {
 			user.server.OnlineMap[newName] = user
 			user.server.mapLock.Unlock()
 			user.SendMsg("用户名更新成功！\n")
+		}
+
+	} else if len(msg) >= 3 && msg[:3] == "to " { // 私聊功能
+		toName := strings.Split(msg, " ")[1]
+		toMsg := strings.Split(msg, " ")[2]
+		toUser, ok := user.server.OnlineMap[toName]
+		if !ok {
+			user.SendMsg(toName + "不在线！\n")
+		} else {
+			toUser.SendMsg(toMsg)
 		}
 
 	} else {
